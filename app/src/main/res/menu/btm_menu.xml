@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/RecipeFragment"
+        android:icon="@drawable/icon_home_grey"
+        android:title="Recipes" />
+    <item
+        android:id="@+id/FavoriteFragment"
+        android:icon="@drawable/icon_favorite_grey"
+        android:title="Favorite" />
+    <item
+        android:id="@+id/CategoryFragment"
+        android:icon="@drawable/icon_list_grey"
+        android:title="Category" />
+
+</menu>
