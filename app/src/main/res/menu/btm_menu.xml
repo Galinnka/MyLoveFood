@@ -14,4 +14,9 @@
         android:icon="@drawable/icon_list_grey"
         android:title="Category" />
 
+    <item
+        android:id="@+id/PersonalFragment"
+        android:icon="@drawable/icon_person_grey"
+        android:title="Personal" />
+
 </menu>

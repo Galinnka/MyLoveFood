@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.RecipeFragment -> replaceFragment(RecipeFragment())
                 R.id.FavoriteFragment -> replaceFragment(FavoritesFragment())
                 R.id.CategoryFragment -> replaceFragment(CategoryFragment())
+                R.id.PersonalFragment -> replaceFragment(personalFragment())
                 else -> {
 
                 }
