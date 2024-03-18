@@ -7,22 +7,22 @@
 
     <fragment
         android:id="@+id/recipeFragment"
-        android:name="com.example.mylovefood.RecipeFragment"
+        android:name="com.example.mylovefood.fragments.RecipeFragment"
         android:label="fragment_recipe"
         tools:layout="@layout/fragment_recipe" />
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="com.example.mylovefood.FavoritesFragment"
+        android:name="com.example.mylovefood.fragments.FavoritesFragment"
         android:label="fragment_favorites"
         tools:layout="@layout/fragment_favorites" />
     <fragment
         android:id="@+id/categoryFragment"
-        android:name="com.example.mylovefood.CategoryFragment"
+        android:name="com.example.mylovefood.fragments.CategoryFragment"
         android:label="fragment_category"
         tools:layout="@layout/fragment_category" />
     <fragment
         android:id="@+id/personalFragment"
-        android:name="com.example.mylovefood.personalFragment"
+        android:name="com.example.mylovefood.fragments.personalFragment"
         android:label="fragment_personal"
         tools:layout="@layout/fragment_personal" />
 </navigation>

@@ -3,10 +3,11 @@ package com.example.mylovefood
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
-import androidx.navigation.ui.NavigationUI
 import com.example.mylovefood.databinding.ActivityMainBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.mylovefood.fragments.CategoryFragment
+import com.example.mylovefood.fragments.FavoritesFragment
+import com.example.mylovefood.fragments.RecipeFragment
+import com.example.mylovefood.fragments.personalFragment
 
 // для переключения цветов кнопок боттом меню использовала селектор в дравбл
 
