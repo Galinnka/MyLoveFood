@@ -1,14 +1,19 @@
 package com.example.mylovefood.fragments
 
+import android.icu.text.CaseMap.Title
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.mylovefood.R
 import com.example.mylovefood.databinding.FragmentRecipeBinding
@@ -46,8 +51,20 @@ class RecipeFragment : Fragment() {
 
         recipeMvvm.getRandomMeal()
         observerRandomMeal()
+        recipeDetailRandomBan()
 
     }
+
+    private fun recipeDetailRandomBan() {
+        binding.randomMealCard.setOnClickListener{
+           findNavController().navigate(R.id.action_recipeFragment_to_detailRecipeFragment)
+        }
+
+
+        }
+
+
+
     //прослушиваем случайное изображение в режиме реального времени
     private fun observerRandomMeal() {
         recipeMvvm.observeRandomMealLiveData().observe(viewLifecycleOwner, object : Observer<Recipe>{

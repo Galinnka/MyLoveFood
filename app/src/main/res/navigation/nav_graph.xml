@@ -9,7 +9,11 @@
         android:id="@+id/recipeFragment"
         android:name="com.example.mylovefood.fragments.RecipeFragment"
         android:label="fragment_recipe"
-        tools:layout="@layout/fragment_recipe" />
+        tools:layout="@layout/fragment_recipe" >
+        <action
+            android:id="@+id/action_recipeFragment_to_detailRecipeFragment"
+            app:destination="@id/detailRecipeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.example.mylovefood.fragments.FavoritesFragment"
@@ -25,4 +29,14 @@
         android:name="com.example.mylovefood.fragments.personalFragment"
         android:label="fragment_personal"
         tools:layout="@layout/fragment_personal" />
+    <fragment
+        android:id="@+id/detailRecipeFragment"
+        android:name="com.example.mylovefood.fragments.DetailRecipeFragment"
+        android:label="fragment_detail_recipe"
+        tools:layout="@layout/fragment_detail_recipe" >
+        <argument
+            android:name="Tit"
+            app:argType="string"
+            android:defaultValue="Title1" />
+    </fragment>
 </navigation>
