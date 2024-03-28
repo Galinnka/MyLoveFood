@@ -13,4 +13,6 @@ interface MealApi {
         @Query("apiKey") apiKey: String,
         @Query("number") number: Int
     ): Call<MealRandom>
+
+
 }

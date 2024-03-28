@@ -31,14 +31,27 @@
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax"/>
 
+           <!-- <TextView
+                android:id="@+id/title_recipe"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:layout_marginStart="15dp"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:text="tttitle"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+
+                />-->
+
+
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
-                android:fontFamily="@font/secular_one"
-                android:textSize="30dp"
-                android:textStyle="bold"
                 app:layout_collapseMode="pin"
                 app:titleTextColor="@color/white"/>
 
@@ -64,7 +77,6 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="15dp"
-                android:layout_marginBottom="15dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -75,16 +87,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
-                    android:layout_marginStart="15dp"
+                    android:layout_marginStart="25dp"
                     android:layout_weight="1"
                     android:drawableLeft="@drawable/icon_clock"
                     android:drawablePadding="5dp"
                     android:drawableTint="@color/black"
                     android:gravity="left"
-                    android:text=" 2 hr"
-                    android:fontFamily="@font/varta"
+                    android:text=" 2hr"
                     android:textColor="@color/black"
-                    android:textSize="13dp"
+                    android:textSize="15dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -92,16 +103,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
-                    android:layout_marginStart="15dp"
+                    android:layout_marginStart="5dp"
                     android:layout_weight="1"
                     android:drawableLeft="@drawable/icon_ingredients"
                     android:drawablePadding="5dp"
                     android:drawableTint="@color/black"
                     android:gravity="left"
                     android:text=" 8 ingr"
-                    android:fontFamily="@font/varta"
                     android:textColor="@color/black"
-                    android:textSize="13dp"
+                    android:textSize="15dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -109,16 +119,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
-                    android:layout_marginStart="15dp"
+                    android:layout_marginStart="5dp"
                     android:layout_weight="1"
                     android:drawableLeft="@drawable/icon_person"
                     android:drawablePadding="5dp"
                     android:drawableTint="@color/black"
-                    android:fontFamily="@font/varta"
                     android:gravity="left"
                     android:text=" 4 pers"
                     android:textColor="@color/black"
-                    android:textSize="13dp"
+                    android:textSize="15dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -132,9 +141,8 @@
                 android:layout_weight="1"
                 android:includeFontPadding="false"
                 android:text="Description"
-                android:fontFamily="@font/secular_one"
                 android:textColor="@color/primary"
-                android:textSize="15dp"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -145,9 +153,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="5dp"
                 android:textColor="@color/black"
-                android:fontFamily="@font/varta"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_instructions" />

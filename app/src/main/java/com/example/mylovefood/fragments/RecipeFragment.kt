@@ -1,41 +1,47 @@
 package com.example.mylovefood.fragments
 
-import android.icu.text.CaseMap.Title
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.core.os.bundleOf
+import com.example.mylovefood.R
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
-import com.example.mylovefood.R
+import com.example.mylovefood.MealActivity
 import com.example.mylovefood.databinding.FragmentRecipeBinding
-import com.example.mylovefood.model_random.MealRandom
 import com.example.mylovefood.model_random.Recipe
 import com.example.mylovefood.mvvm.RecipeViewModel
-import com.example.mylovefood.retrofit.RetrofitInstance
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
+import com.example.mylovefood.util.Const
 
 
 class RecipeFragment : Fragment() {
 
     private lateinit var binding:FragmentRecipeBinding
     private lateinit var recipeMvvm:RecipeViewModel
+    private lateinit var randomMeal:Recipe
+
+    companion object {
+        const val MEAL_ID = "com.example.mylovefood.fragments.idMeal"
+        const val MEAL_NAME = "com.example.mylovefood.fragments.nameMeal"
+        const val MEAL_THUMB = "com.example.mylovefood.fragments.thumbMeal"
+       // const val MEAL_INSTR = "com.example.mylovefood.fragments.instrMeal"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         recipeMvvm = ViewModelProviders.of(this)[RecipeViewModel::class.java]
     }
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,20 +52,48 @@ class RecipeFragment : Fragment() {
 
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         recipeMvvm.getRandomMeal()
         observerRandomMeal()
+        recipeDetailRandomBanAct()
         recipeDetailRandomBan()
 
     }
 
     private fun recipeDetailRandomBan() {
-        binding.randomMealCard.setOnClickListener{
-           findNavController().navigate(R.id.action_recipeFragment_to_detailRecipeFragment)
-        }
+        binding.randomMealCard.setOnClickListener {
+            recipeMvvm.observeRandomMealLiveData().observe(viewLifecycleOwner
+            ) { meal ->
+                val titleArg = meal.title
+                val imgArg = meal.image
+                val descArg = meal.summary
+                Log.d("TESTT", "meal image $imgArg name $titleArg desc $descArg")
 
+                val action = RecipeFragmentDirections.actionRecipeFragmentToDetailRecipeFragment(titleArg, imgArg, descArg)
+
+                this.randomMeal = meal
+                findNavController().navigate(action)
+            }
+
+        }
+    }
+
+
+    //тест запуск через вторую активити
+    private fun recipeDetailRandomBanAct() {
+      /*  binding.randomMealCard.setOnClickListener{
+            val intent = Intent(activity,MealActivity::class.java)
+
+            intent.putExtra(MEAL_ID,randomMeal.id)
+            intent.putExtra(MEAL_NAME,randomMeal.title)
+            intent.putExtra(MEAL_THUMB,randomMeal.image)
+            //intent.putExtra(MEAL_INSTR,randomMeal.creditsText)
+            startActivity(intent)
+           //findNavController().navigate(R.id.action_recipeFragment_to_detailRecipeFragment)
+        }*/
 
         }
 
@@ -67,13 +101,30 @@ class RecipeFragment : Fragment() {
 
     //прослушиваем случайное изображение в режиме реального времени
     private fun observerRandomMeal() {
-        recipeMvvm.observeRandomMealLiveData().observe(viewLifecycleOwner, object : Observer<Recipe>{
-            override fun onChanged(value: Recipe) {
-                Glide.with(this@RecipeFragment)
-                    .load(value!!.image)
-                    .into(binding.imgRandomMeal)
-            }
+        recipeMvvm.observeRandomMealLiveData().observe(viewLifecycleOwner
+        ) { meal ->
+            Glide.with(this@RecipeFragment)
+                .load(meal!!.image)
+                .into(binding.imgRandomMeal)
+            this.randomMeal = meal
 
-        })
+        }
     }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (childFragmentManager.backStackEntryCount > 0) {
+                    childFragmentManager.popBackStack()
+                } else {
+                    isEnabled = false
+                    activity?.onBackPressed()
+                }
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+    }
+
 }

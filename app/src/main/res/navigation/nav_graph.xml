@@ -35,8 +35,11 @@
         android:label="fragment_detail_recipe"
         tools:layout="@layout/fragment_detail_recipe" >
         <argument
-            android:name="Tit"
-            app:argType="string"
-            android:defaultValue="Title1" />
+            android:name="ArgTitleRecipe"
+            app:argType="string" />
+        <argument android:name="ArgImg"
+            app:argType="string" />
+        <argument
+            android:name="DescriptionArgs" />
     </fragment>
 </navigation>
