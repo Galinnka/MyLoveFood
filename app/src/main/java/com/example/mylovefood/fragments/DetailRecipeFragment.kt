@@ -36,6 +36,8 @@ class DetailRecipeFragment : Fragment() {
         val text = args.ArgTitleRecipe
         val iimg = args.ArgImg
         val descc = args.DescriptionArgs
+        /*val min = args.
+        val pers = args.*/
         binding.collapsingToolbar.title = text
         binding.collapsingToolbar.setCollapsedTitleTextColor(resources.getColor(R.color.white))
         binding.collapsingToolbar.setExpandedTitleColor(resources.getColor(R.color.white))

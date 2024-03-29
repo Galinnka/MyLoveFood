@@ -70,7 +70,9 @@ class RecipeFragment : Fragment() {
                 val titleArg = meal.title
                 val imgArg = meal.image
                 val descArg = meal.summary
-                Log.d("TESTT", "meal image $imgArg name $titleArg desc $descArg")
+                val minutes = meal.cookingMinutes
+                val pers = meal.servings
+                Log.d("TESTT", "meal image $imgArg name $titleArg desc $descArg minutes cooking $minutes person $pers" )
 
                 val action = RecipeFragmentDirections.actionRecipeFragmentToDetailRecipeFragment(titleArg, imgArg, descArg)
 

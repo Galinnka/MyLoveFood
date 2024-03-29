@@ -1,6 +1,7 @@
 package com.example.mylovefood.retrofit
 
 import com.example.mylovefood.model_random.MealRandom
+import com.example.mylovefood.model_random.ResultCategory
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -14,5 +15,9 @@ interface MealApi {
         @Query("number") number: Int
     ): Call<MealRandom>
 
+        @GET("recipes/complexSearch?")
+        fun getPopularsCategory(
+            @Query("type") categoryName:String
+        ): Call<ResultCategory>
 
 }
