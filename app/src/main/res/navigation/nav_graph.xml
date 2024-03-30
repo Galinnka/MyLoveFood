@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/recipeFragment"
-        android:name="com.example.mylovefood.fragments.RecipeFragment"
+        android:name="com.example.mylovefood.fragments.home.RecipeFragment"
         android:label="fragment_recipe"
         tools:layout="@layout/fragment_recipe" >
         <action
@@ -16,22 +16,22 @@
     </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="com.example.mylovefood.fragments.FavoritesFragment"
+        android:name="com.example.mylovefood.fragments.home.FavoritesFragment"
         android:label="fragment_favorites"
         tools:layout="@layout/fragment_favorites" />
     <fragment
         android:id="@+id/categoryFragment"
-        android:name="com.example.mylovefood.fragments.CategoryFragment"
+        android:name="com.example.mylovefood.fragments.home.CategoryFragment"
         android:label="fragment_category"
         tools:layout="@layout/fragment_category" />
     <fragment
         android:id="@+id/personalFragment"
-        android:name="com.example.mylovefood.fragments.personalFragment"
+        android:name="com.example.mylovefood.fragments.home.personalFragment"
         android:label="fragment_personal"
         tools:layout="@layout/fragment_personal" />
     <fragment
         android:id="@+id/detailRecipeFragment"
-        android:name="com.example.mylovefood.fragments.DetailRecipeFragment"
+        android:name="com.example.mylovefood.fragments.home.DetailRecipeFragment"
         android:label="fragment_detail_recipe"
         tools:layout="@layout/fragment_detail_recipe" >
         <argument

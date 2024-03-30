@@ -1,5 +1,4 @@
-package com.example.mylovefood.fragments
-
+package com.example.mylovefood.fragments.home
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -15,7 +14,6 @@ import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
-import com.example.mylovefood.MealActivity
 import com.example.mylovefood.databinding.FragmentRecipeBinding
 import com.example.mylovefood.model_random.Recipe
 import com.example.mylovefood.mvvm.RecipeViewModel
@@ -32,7 +30,7 @@ class RecipeFragment : Fragment() {
         const val MEAL_ID = "com.example.mylovefood.fragments.idMeal"
         const val MEAL_NAME = "com.example.mylovefood.fragments.nameMeal"
         const val MEAL_THUMB = "com.example.mylovefood.fragments.thumbMeal"
-       // const val MEAL_INSTR = "com.example.mylovefood.fragments.instrMeal"
+        // const val MEAL_INSTR = "com.example.mylovefood.fragments.instrMeal"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,20 +82,20 @@ class RecipeFragment : Fragment() {
     }
 
 
-    //тест запуск через вторую активити
+    //тест запуск через вторую активити - АКТИВИТИ УДАЛЕНА!!
     private fun recipeDetailRandomBanAct() {
-      /*  binding.randomMealCard.setOnClickListener{
-            val intent = Intent(activity,MealActivity::class.java)
+        /*  binding.randomMealCard.setOnClickListener{
+              val intent = Intent(activity,MealActivity::class.java)
 
-            intent.putExtra(MEAL_ID,randomMeal.id)
-            intent.putExtra(MEAL_NAME,randomMeal.title)
-            intent.putExtra(MEAL_THUMB,randomMeal.image)
-            //intent.putExtra(MEAL_INSTR,randomMeal.creditsText)
-            startActivity(intent)
-           //findNavController().navigate(R.id.action_recipeFragment_to_detailRecipeFragment)
-        }*/
+              intent.putExtra(MEAL_ID,randomMeal.id)
+              intent.putExtra(MEAL_NAME,randomMeal.title)
+              intent.putExtra(MEAL_THUMB,randomMeal.image)
+              //intent.putExtra(MEAL_INSTR,randomMeal.creditsText)
+              startActivity(intent)
+             //findNavController().navigate(R.id.action_recipeFragment_to_detailRecipeFragment)
+          }*/
 
-        }
+    }
 
 
 

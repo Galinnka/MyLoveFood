@@ -1,4 +1,4 @@
-package com.example.mylovefood.fragments
+package com.example.mylovefood.fragments.home
 
 import android.os.Bundle
 import android.text.Html
@@ -6,16 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.mylovefood.R
 import com.example.mylovefood.databinding.FragmentDetailRecipeBinding
-import com.example.mylovefood.util.Const
+
 
 class DetailRecipeFragment : Fragment() {
+    private val args by navArgs<DetailRecipeFragmentArgs>()
  private lateinit var binding: FragmentDetailRecipeBinding
- private val args by navArgs<DetailRecipeFragmentArgs>()
+
+ //private val args by navArgs<DetailRecipeFragmentArgs>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
