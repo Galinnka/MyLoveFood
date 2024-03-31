@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'com.google.dagger.hilt.android'
+    id 'org.jetbrains.kotlin.kapt'
 }
 
 android {
@@ -25,16 +27,20 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
 
     buildFeatures{
         dataBinding = true
         viewBinding = true
+    }
+
+    kapt {
+        correctErrorTypes true
     }
 }
 
@@ -67,10 +73,14 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
 // Java language implementation
-    implementation("androidx.fragment:fragment:1.6.2")
+    implementation 'androidx.fragment:fragment:1.6.2'
     // Kotlin
-    implementation("androidx.fragment:fragment-ktx:1.6.2")
+    implementation 'androidx.fragment:fragment-ktx:1.6.2'
     // Testing Fragments in Isolation
-    debugImplementation("androidx.fragment:fragment-testing:1.6.2")
+    debugImplementation 'androidx.fragment:fragment-testing:1.6.2'
+    //hilt
+    implementation 'com.google.dagger:hilt-android:2.44'
+    kapt 'com.google.dagger:hilt-android-compiler:2.44'
+
 
 }

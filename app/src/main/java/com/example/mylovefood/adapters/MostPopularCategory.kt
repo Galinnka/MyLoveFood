@@ -4,14 +4,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mylovefood.databinding.PopularCategoryBinding
-import com.example.mylovefood.model_random.ResultCategory
-import com.example.mylovefood.models.MealList
+import com.example.mylovefood.model.model_random.ResultCategory
+import com.example.mylovefood.model.models.MealList
 
 class MostPopularCategory(): RecyclerView.Adapter<MostPopularCategory.PopularCategoryViewHolder>() {
 
-    private var mealList = ArrayList<ResultCategory>()
+    private var mealList = ArrayList<com.example.mylovefood.model.model_random.ResultCategory>()
 
-    fun setMeals(mealList: ArrayList<ResultCategory>) {
+    fun setMeals(mealList: ArrayList<com.example.mylovefood.model.model_random.ResultCategory>) {
         this.mealList = mealList
         notifyDataSetChanged()
     }
