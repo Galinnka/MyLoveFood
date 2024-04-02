@@ -13,11 +13,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.mylovefood.adapters.CategoryHorisontal_RecView
 import com.example.mylovefood.adapters.MealAdapter
+import com.example.mylovefood.adapters.MostPopularCategory
 import com.example.mylovefood.databinding.FragmentRecipeBinding
+import com.example.mylovefood.databinding.RecipesRowLayoutBinding
 import com.example.mylovefood.model.model_random.Recipe
 import com.example.mylovefood.mvvm.RecipeViewModel
 import com.example.mylovefood.util.Const
@@ -29,8 +33,11 @@ class RecipeFragment : Fragment() {
     private lateinit var recipeMvvm:RecipeViewModel
     private lateinit var randomMeal: com.example.mylovefood.model.model_random.Recipe
     private lateinit var mainAdapter: MealAdapter
+    //private lateinit var categoryAdapter: MostPopularCategory
+    private lateinit var categoriesAdapter: CategoryHorisontal_RecView
     private lateinit var recyclerView: RecyclerView
-    private lateinit var recipeArrayList: ArrayList<Recipe>
+  //  private lateinit var catrecyclerView: RecyclerView
+
 
     companion object {
         const val MEAL_ID = "com.example.mylovefood.fragments.idMeal"
@@ -42,7 +49,8 @@ class RecipeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         recipeMvvm = ViewModelProviders.of(this)[RecipeViewModel::class.java]
-        mainAdapter = MealAdapter()
+        //mainAdapter = MealAdapter()
+        categoriesAdapter = CategoryHorisontal_RecView()
     }
 
 
@@ -65,16 +73,40 @@ class RecipeFragment : Fragment() {
         observerRandomMeal()
         recipeDetailRandomBanAct()
         recipeDetailRandomBan()
+        onSearchIconClick()
+
         //подключаем список рецептов
-        val layoutManager = LinearLayoutManager(context)
+        /*val layoutManager = GridLayoutManager(requireContext(), 2)
         recyclerView = binding.recPopularMeal
         recyclerView.layoutManager = layoutManager
         recyclerView.setHasFixedSize(true)
         mainAdapter = MealAdapter()
-        recyclerView.adapter = mainAdapter
+        recyclerView.adapter = mainAdapter*/
+
+        //подключаем список категорий
+        //val layoutManager = LinearLayoutManager(requireContext(),)
+        /*recyclerView = binding.recyclerCategory
+
+        recyclerView.setHasFixedSize(true)
+        categoriesAdapter = CategoryHorisontal_RecView()
+        recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.adapter = categoriesAdapter*/
 
     }
 
+    private fun onSearchIconClick() {
+        binding.tvWelcome.setOnClickListener {
+            findNavController().navigate(R.id.action_recipeFragment_to_searchFragment)
+        }
+    }
+
+
+    /*private fun init() {
+        binding.apply {
+            recPopularMeal.layoutManager = GridLayoutManager(this@RecipeFragment, 2)
+            recPopularMeal.adapter = mainAdapter
+        }
+    }*/
     private fun recipeDetailRandomBan() {
         binding.randomMealCard.setOnClickListener {
             recipeMvvm.observeRandomMealLiveData().observe(viewLifecycleOwner

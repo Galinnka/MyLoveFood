@@ -13,6 +13,7 @@ import retrofit2.Response
 
 class RecipeViewModel(): ViewModel() {
     private var randomMealLiveData = MutableLiveData<com.example.mylovefood.model.model_random.Recipe>()
+    private val searchRecipeLiveData = MutableLiveData<List<Recipe>>()
 
     fun getRandomMeal() {
         RetrofitInstance.api.getRandomMeal(apiKey = "24a1a4d59a1449bfb51a9026344bbc45", 5).enqueue(object :
@@ -27,7 +28,6 @@ class RecipeViewModel(): ViewModel() {
                     return
                 }
             }
-
             override fun onFailure(call: Call<com.example.mylovefood.model.model_random.MealRandom>, t: Throwable) {
                 Log.d("RecipeFragment", t.message.toString())
             }
@@ -35,6 +35,50 @@ class RecipeViewModel(): ViewModel() {
         })
     }
 
+    fun getSearchRecipes() {
+        RetrofitInstance.api.getSearchRecipes("").enqueue(object :
+            Callback<com.example.mylovefood.model.model_random.MealRandom> {
+            override fun onResponse(call: Call<com.example.mylovefood.model.model_random.MealRandom>, response: Response<com.example.mylovefood.model.model_random.MealRandom>) {
+
+                if (response.body() != null) {
+                    val randomMeal =
+                        response.body()!!.recipes[0]
+                    searchRecipeLiveData.value = randomMeal
+                    //test по id  названию
+                    Log.d("TEST2", "meal id ${randomMeal.id} name ${randomMeal.title}")
+                } else {
+                    return
+                }
+            }
+
+            override fun onFailure(call: Call<com.example.mylovefood.model.model_random.MealRandom>, t: Throwable) {
+                Log.e("RecipeViewModel", t.message.toString())
+            }
+
+
+        })
+    }
+
+
+   /* fun searchRecipe(searchQuery: String) = RetrofitInstance.api.getSearchRecipes(searchQuery).enqueue(
+        object : Callback<MealRandom> {
+            override fun onResponse(call: Call<MealRandom>, response: Response<MealRandom>) {
+                val recipeList = response.body()?.recipes
+                recipeList?.let {
+                    searchRecipeLiveData.postValue(it)
+                }
+            }
+
+            override fun onFailure(call: Call<MealRandom>, t: Throwable) {
+               Log.e("RecipeViewModel", t.message.toString())
+            }
+
+
+        }
+    )*/
+
+    //поиск списка блюд в режиме реального времени
+    fun observeSerchRecipeLiveData(): LiveData<List<Recipe>> = searchRecipeLiveData
     fun observeRandomMealLiveData():LiveData<com.example.mylovefood.model.model_random.Recipe> {
         return randomMealLiveData
     }

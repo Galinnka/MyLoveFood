@@ -25,4 +25,9 @@ interface MealApi {
     fun getRecipes(
         @QueryMap queries: Map<String, String>
     ): Response<MealRandom>
+
+    @GET("recipes/complexSearch?")
+    fun getSearchRecipes(
+        @Query("query") searchQuery: String
+    ): Call<com.example.mylovefood.model.model_random.MealRandom>
 }

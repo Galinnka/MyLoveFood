@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.home.RecipeFragment">
     
@@ -17,9 +16,6 @@
             android:layout_height="match_parent">
 
 
-
-
-
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:id="@+id/linear_header"
@@ -28,23 +24,26 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_height="match_parent"
             android:scaleType="centerCrop"
             tools:src="@tools:sample/avatars" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:id="@+id/w_name"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_weight="3">
+            >
 
             <TextView
+                android:id="@+id/tv_welcome"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_gravity="top"
@@ -60,6 +59,15 @@
                 android:gravity="left"
                 android:text="Name" />
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/im_search"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:gravity="right"
+            android:layout_gravity="right"
+            tools:src="@drawable/ic_search"
+            app:tint="@color/grey_search"/>
 
         <ImageView
             android:id="@+id/menu_tools"
@@ -78,7 +86,7 @@
         android:layout_marginTop="10sp"
         app:cardCornerRadius="35dp"
         app:cardUseCompatPadding="true"
-        app:layout_constraintStart_toStartOf="@+id/linear_header"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linear_header">
 
@@ -127,7 +135,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rec_popular_meal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             tools:listitem="@layout/recipes_row_layout"
             android:scrollbars="none"/>
 

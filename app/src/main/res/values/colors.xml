@@ -7,6 +7,6 @@
     <color name="grey_light">#9C9C9C</color>
     <color name="unchecked">#9C9C9C</color>
     <color name="text_icon">#606060</color>
-
+    <color name="grey_search">#D1D1D1</color>
     <color name="g_black">#33405F</color>
 </resources>

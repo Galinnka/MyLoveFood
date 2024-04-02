@@ -15,12 +15,12 @@ import com.example.mylovefood.util.RecipesDiffUtil
 class MealAdapter : RecyclerView.Adapter<MealAdapter.MyViewHolder>() {
 
     //забираем весь список полей из model_random
-    private var recipes = emptyList<Recipe>()
+    private var recipesList = ArrayList<Recipe>()
     class MyViewHolder(private val binding: RecipesRowLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(result: Recipe) {
-            binding.resultFoodRecipes = result
-            binding.executePendingBindings()
+          /*  binding.resultFoodRecipes = result
+            binding.executePendingBindings()*/
         }
 
         companion object
@@ -38,19 +38,25 @@ class MealAdapter : RecyclerView.Adapter<MealAdapter.MyViewHolder>() {
 
 
     override fun onBindViewHolder(holder: MealAdapter.MyViewHolder, position: Int) {
-        val currentRecipe = recipes[position]
+        val currentRecipe = recipesList[position]
         holder.bind(currentRecipe)
     }
 
     override fun getItemCount(): Int {
-        return recipes.size
+        return recipesList.size
     }
 
+    fun addRecipe(recipe: Recipe){
+        recipesList.add(recipe)
+        notifyDataSetChanged()
+    }
+
+
     fun setData(newData: MealRandom) {
-        val recipesDiffUtil = RecipesDiffUtil(recipes, newData.recipes)
+        /*val recipesDiffUtil = RecipesDiffUtil(recipes, newData.recipes)
         val diffUtilResult = DiffUtil.calculateDiff(recipesDiffUtil)
         recipes = newData.recipes
-        diffUtilResult.dispatchUpdatesTo(this)
+        diffUtilResult.dispatchUpdatesTo(this)*/
     }
 
 }

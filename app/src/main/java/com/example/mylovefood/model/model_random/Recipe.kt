@@ -3,7 +3,7 @@ package com.example.mylovefood.model.model_random
 
 import com.google.gson.annotations.SerializedName
 
-data class Recipe(
+abstract class Recipe(
     @SerializedName("aggregateLikes")
     val aggregateLikes: Int,
     @SerializedName("analyzedInstructions")
@@ -76,4 +76,4 @@ data class Recipe(
     val veryPopular: Boolean,
     @SerializedName("weightWatcherSmartPoints")
     val weightWatcherSmartPoints: Int
-)
+) : List<Recipe>

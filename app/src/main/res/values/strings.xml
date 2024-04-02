@@ -4,4 +4,6 @@
     <string name="text_cook">COOK WHAT YOU WANT AND WHERE YOU WANT</string>
     <string name="text_cook2">15.000 AND MORE RECIPES IN ONE APP</string>
     <string name="choose_language">Choose language</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
